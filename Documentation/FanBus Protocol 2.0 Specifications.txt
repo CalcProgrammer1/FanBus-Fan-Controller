@@ -1,0 +1,80 @@
+FanBus Protocol 2.0
+===================
+
+FanBus protocol version 2.0 revises the command set to be more efficient and more reliable when addressing
+multiple devices.  FanBus protocol 1.0 was derived from the original RGB Fan Controller protocol which did
+not take multiple device addressing into account.  To accommodate multiple devices, an 8-bit serial protocol
+is used, the eighth bit is used to indicate an address (start of new packet).  In addition, the END (0xFF)
+byte from the original protocol has been removed.  All requests to a device are acknowledged by the device's
+address (with 8th bit cleared).  The address 0x80 is reserved for a global call address, sending a packet
+with 0x00 will affect all controllers on the FanBus network.  This may also be used to program device
+addresses which are saved in EEPROM.
+
+There are four different packet sizes used in FanBus Protocol 2.0.  These are 1-byte, 2-byte, and
+4-byte sizes.  1-byte packets correspond to commands within the range 0x0X-0x2X.  2-byte packets
+correspond to commands within the range 0x3X-0x5X.  4-byte packets correspond to commands within the range
+0x6X-0x7X.  These command ranges may be used differently for different device types but all devices must
+have a basic standard control protocol to set up addressing and identification.  The FanBus common protocol
+is listed below.
+
+1-byte common commands
+======================
+
+|Hex	|Command	|Works on Global Call	|Packet Format				|Description
+0x00:	No Operation	Yes			| Addr	| 0x00	|			Nothing is returned, nothing happens
+0x01:	Ping		No			| Addr	| 0x01	/ Addr			Device returns its address
+0x02:	Device ID	No			| Addr	| 0x02	/ DevID	/ Addr		Device returns its device ID
+0x03:	Device Type	No			| Addr	| 0x03	/ DevTyp / Addr		Device returns its device type
+0x04:	Device Name	No			| Addr	| 0x04	/ <DevName> / Addr	Device returns its name string, null terminated
+0x05:	Software Reset	Yes			| Addr	| 0x05	|			Device resets itself
+
+2-byte common commands
+======================
+
+|Hex	|Command	|Works on Global Call	|Packet Format				|Description
+0x31:	Set Address	Yes			| Addr	| 0x41	| NewAd	/ NewAd		Device returns its new address
+
+RGB Fan Controller Protocol
+===========================
+
+Since the only FanBus device that I have designed so far is an RGB LED fan controller, the only device command
+set that is provided is for RGB LED fan controllers.  Fan controllers have device type 0x1X, RGB fan controllers
+with 4 LED's and one fan have device type 0x11.  The RGB fan protocol inherits all above functions from the
+common set and the listed commands are added for RGB fan control.
+
+1-byte RGB fan commands
+=======================
+
+|Hex	|Command	|Works on Global Call	|Packet Format					|Description
+0x10	Get Fan Speed	No			| Addr	| 0x10	| CKSUM	/ Fan Speed / Addr	Returns the fan PWM speed value from 0-255
+0x11	Get Fan RPM	No			| Addr	| 0x11	| CKSUM	/ <Fan RPM> / Addr 	Returns the fan RPM as a 16-bit unsigned integer
+0x12	Get LED		No			| Addr	| 0x12	| CKSUM	/ R1 / G1 / B1 / R2 / G2 / B2 / R3 / G3 / B3 / R4/ G4 / B4 / Addr
+
+2-byte RGB fan commands
+=======================
+
+|Hex	|Command	|Works on Global Call	|Packet Format				|Description
+0x40	Set Fan		Yes, without ack	| Addr	| 0x50	| Fan	| CKSUM	/ Addr	Sets the fan speed to <Fan>, an unsigned value
+0x41	Set LED		Yes, without ack	| Addr	| 0x51	| LED	| CKSUM	/ Addr	Sets the loaded color to the desired LED
+
+	The LED byte is used bitwise to select which LED's to apply the color to as well as to update the LED's.
+	
+		7	6	5	4	3	2	1	0
+		================================================================
+		Update	-	-	-	LED4	LED3	LED2	LED1
+	
+	Setting LEDX with Update cleared will load the current color into a buffer to be applied to the LED but will not actually
+	change the LED.  This can be used to pre-load all 4 LED's with different colors and then apply the changes at once for
+	a simultaneous update.
+
+4-byte RGB fan commands
+=======================
+
+|Hex	|Command	|Works on Global Call	|Packet Format							|Description
+0x60	Color HSV	Yes, without ack	| Addr	| 0xD0	| Hh	| Hl	| SV	| CKSUM	\ Ack		This command is used to send an HSV color to the device
+
+	The Hue value is sent as a 16-bit unsigned integer using bytes Hh and Hl.  The S and V components are each 4-bit unsigned
+	values packed into the SV byte.  This is used because the RGB fan controller focuses mainly on color and not saturation or
+	value.
+
+0x61	Color RGB	Yes, without ack	| Addr	| 0xD1	| R	| G	| B	| CKSUM	\ Ack		This command is used to send an RGB color to the device

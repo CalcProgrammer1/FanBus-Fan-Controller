@@ -1,0 +1,37 @@
+RGB LED Fan Controller Serial Port Protocol Rev. A
+
+0x0X - Status Commands
+=======================
+0x01	Ping Controller		Replies with 0x7F to let host know it's connected	| 0x01	| 0xAA |
+
+0x1X - Fan Commands
+=======================
+0x11	Set Fan Speed		Sets fan speed, replies with the fan speed byte		| 0x11	| FS	| 0xAA	|	FS is a single byte, unsigned
+0x12	Get Fan Speed		Returns the current fan speed (PWM) setting		| 0x12	| 0xAA 	|
+0x13	Poll RPM		Poll the RPM a single time, returns RPM			| 0x14	| 0xAA	|
+
+0x2X - LED Commands
+=======================
+0x21  Set LED color: | 0x21 | Led/Color | Value | 0xAA |
+
+Led/Color bit	7  |  6  |  5  |  4  |  3  |  2  |  1  |  0  |
+ 		NOT---USED---  |  LED Number     |  Color    |
+LED Number:
+4	3	2
+------------------
+0	0	0	LED 1
+0	0	1	LED 2
+0	1	0	LED 3
+0	1	1	LED 4
+1	0	0	ALL
+1	0	1	ALL
+1	1	0	ALL
+1	1	1	ALL
+
+Color
+1	0
+---------
+0	0	Red
+0	1	Green
+1	1	Blue
+1	0	White (all colors)

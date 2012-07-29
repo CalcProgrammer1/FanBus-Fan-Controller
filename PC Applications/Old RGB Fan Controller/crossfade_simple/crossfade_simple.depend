@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1267598628 source:c:\documents and settings\adam honse\my documents\programming\crossfade_simple\main.cpp
+	<conio.h>
+	<stdio.h>
+	<windows.h>
+	<ctime>
+

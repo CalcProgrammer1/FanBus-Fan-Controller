@@ -1,0 +1,14 @@
+FanBus 1.0 Protocol Specifications|
+----------------------------------|
+
+Introduction
+
+-FanBus is a chainable, serial data bus designed for low-speed communication to case mod and PC cooling accessories such as fan controllers and lights
+
+-FanBus is designed to be simple, cheap, and open
+
+-FanBus is designed to be versatile and supports customized commands for different devices
+
+Layout
+
+-FanBus utilizes a master-slave layout where one master device (the PC's serial port) connects direct

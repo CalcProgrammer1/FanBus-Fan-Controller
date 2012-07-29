@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="FanBus Controller 1.0" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\FanBus Controller 1.0" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\FanBus Controller 1.0" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mms-bitfields" />
+			<Add option="-Wall" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\gtk+-bundle_2.22.1-20101227_win32\include" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\gtk+-bundle_2.22.1-20101227_win32\include\gtk-2.0" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\gtk+-bundle_2.22.1-20101227_win32\include\cairo" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\gtk+-bundle_2.22.1-20101227_win32\include\gdk" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\gtk+-bundle_2.22.1-20101227_win32\include\glib-2.0" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\gtk+-bundle_2.22.1-20101227_win32\lib\glib-2.0\include" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\gtk+-bundle_2.22.1-20101227_win32\include\pango-1.0" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\gtk+-bundle_2.22.1-20101227_win32\lib\gtk-2.0\include" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\gtk+-bundle_2.22.1-20101227_win32\include\atk-1.0" />
+		</Compiler>
+		<Linker>
+			<Add library="gtk-win32-2.0" />
+			<Add library="gobject-2.0" />
+			<Add library="glib-2.0" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\gtk+-bundle_2.22.1-20101227_win32\lib" />
+		</Linker>
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
