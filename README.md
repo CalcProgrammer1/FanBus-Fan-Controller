@@ -8,6 +8,7 @@ of my RGB Fan Controller and FanBus RGB Fan Controller projects, the details of 
 pages:
 
 http://www.instructables.com/id/Color-Changing-Digital-PC-Fan-Controller/
+
 http://www.instructables.com/id/FanBus-Digital-Fan-and-LED-Interface-for-PC/
 
 The project was to modify a clear LED PC fan into a digitally controlled PC fan with 4 independently controlled RGB
