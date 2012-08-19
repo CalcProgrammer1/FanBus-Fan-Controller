@@ -3,6 +3,8 @@
 
 using namespace std;
 
+fanbus bus;
+
 int main(int argc, char** argv)
 {
 	Gtk::Main kit(argc, argv);

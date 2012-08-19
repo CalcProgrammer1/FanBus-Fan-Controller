@@ -6,7 +6,7 @@ class main_window : public Gtk::Window
 {
 	public:
 		main_window();
-        void test_func();
+        void open_func();
 
 
 	private:
@@ -18,10 +18,6 @@ class main_window : public Gtk::Window
         serial_control port;
 
        	//Fan tab objects
-       	fan_tab* fans[256];
+       	fan_tab* fans[252];
        	int num_fans;
-
-       	//Test Button
-       	Gtk::Button test;
-
 };

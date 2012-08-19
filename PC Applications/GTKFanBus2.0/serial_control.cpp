@@ -1,4 +1,5 @@
 #include "serial_control.h"
+extern fanbus bus;
 
 serial_control::serial_control()
 {
@@ -31,21 +32,22 @@ bool serial_control::is_open()
     return status;
 }
 
-void serial_control::open()
+void serial_control::control_open()
 {
     if(status == false)
     {
-        port.open(port_name_box.get_text().c_str(), atoi(port_baud_box.get_text().c_str()));
+        port.serial_open(port_name_box.get_text().c_str(), atoi(port_baud_box.get_text().c_str()));
         port_open_button.set_label("Open");
+        bus.fanbus_set_port(&port);
         status = true;
     }
 }
 
-void serial_control::close()
+void serial_control::control_close()
 {
     if(status == true)
     {
-        port.close();
+        port.serial_close();
         port_open_button.set_label("Closed");
         status = false;
     }
@@ -54,22 +56,11 @@ void serial_control::toggle()
 {
     if(status == true)
     {
-        close();
+        control_close();
     }
     else
     {
-        open();
+        control_open();
+        serial_open_signal.emit();
     }
-}
-
-//Function to read data from the port buffer
-int serial_control::read(char * buffer, int length)
-{
-    return port.read(buffer, length);
-}
-
-//Function to write data to the serial port
-int serial_control::write(char * buffer, int length)
-{
-    return port.write(buffer, length);
 }

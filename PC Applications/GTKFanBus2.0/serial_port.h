@@ -1,6 +1,8 @@
-#include <cstring>
+#ifndef SERIAL_PORT_H
+#define SERIAL_PORT_H
+
+#include <string.h>
 #include <stdio.h>
-#include <iostream>
 #define WINDOWS
 #ifdef WINDOWS
 #include <windows.h>
@@ -9,6 +11,9 @@
 #ifdef LINUX
 #include <fcntl.h>
 #include <termios.h>
+#include <linux/serial.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
 #endif
 
 //Serial Port Class
@@ -25,28 +30,28 @@ class serial_port
 		~serial_port();
 
 		//Function to open the port
-		void open();
-		void open(const char* name);
-		void open(const char* name, unsigned int baud);
+		bool serial_open();
+		bool serial_open(const char* name);
+		bool serial_open(const char* name, unsigned int baud);
 
 		//Function to close the port
-		void close();
+		void serial_close();
 
 		//Functions for controlling baud rate
-		void set_baud(unsigned int baud);
-		int get_baud();
+		void serial_set_baud(unsigned int baud);
+		int serial_get_baud();
 
 		//Function to read data from the port buffer
-		int read(char * buffer, int length);
+		int serial_read(char * buffer, int length);
 
 		//Function to write data to the serial port
-		int write(char * buffer, int length);
+		int serial_write(char * buffer, int length);
 
 		//Function to flush the serial port buffer
-		void flush();
+		void serial_flush();
 
 		//Function to list the number of available bytes
-		int available();
+		int serial_available();
 
 	private:
 		char port_name[1024];
@@ -61,3 +66,5 @@ class serial_port
 		DCB dcb;
 		#endif
 };
+
+#endif

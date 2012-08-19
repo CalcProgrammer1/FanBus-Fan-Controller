@@ -1,0 +1,16 @@
+[14-08-2002] Eliminate use of Draw_Init
+  Now the library doesn't need Draw_Init anymore!!
+  Every function has a default function pointer to a init function that
+  change all the primitives functions pointers in the library, and then call 
+  the correct function. Later calls to the primitives will use the correct 
+  function pointer. Code already using Draw_Init can do...
+
+  #include "SDL_draw.h"
+  #define Draw_Init do{ }while(0)
+
+  ...to fix this (maintaining compatibility) and use the new library.
+  
+[13-08-2002] Lock and Unlock code for threading
+  Now all the primitives have a SDL_LockSurface and SDL_UnlockSurface for
+  correct behavior on multithreaded code.
+  

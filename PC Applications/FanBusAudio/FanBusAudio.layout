@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Linux" />
+	<File name="FanBusAudio.cpp" open="1" top="1" tabpos="0">
+		<Cursor position="2081" topLine="69" />
+	</File>
+	<File name="chuck_fft.c" open="0" top="0" tabpos="0">
+		<Cursor position="455" topLine="198" />
+	</File>
+	<File name="fanbus.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="167" topLine="9" />
+	</File>
+	<File name="serial_port.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="2321" topLine="0" />
+	</File>
+	<File name="serial_port.h" open="0" top="0" tabpos="2">
+		<Cursor position="1264" topLine="15" />
+	</File>
+</CodeBlocks_layout_file>

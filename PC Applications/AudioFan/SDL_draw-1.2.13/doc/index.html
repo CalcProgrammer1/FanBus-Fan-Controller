@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>SDL_draw</title>
+
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+
+  <meta name="author" content="Mario Palomo Torrero">
+  <meta name="description" content="SDL_draw Library">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000099" vlink="#990099"
+ alink="#000099">
+
+<center><font face="Arial, Helvetica" size="+3">SDL_draw Library</font><br>
+<font face="Arial, Helvetica" size="-2">Mario Palomo, Jos&eacute; de la
+Huerga, Pepe Gonz&aacute;lez</font></center>
+
+<div align="right"><font color="#ffff00"><a
+href="index-es.html"><small>Español</small></a></font><br>
+</div>
+<font face="Arial, Helvetica"><b><big><u>SDL_draw 1.2.1
+Released</u></big></b><br>
+ <br>
+  The latest version of this library is available from:<a
+ href="http://sourceforge.net/projects/sdl-draw/">
+http://sourceforge.net/projects/sdl-draw/</a><br>
+  <br>
+</font><font face="Arial, Helvetica">  This library is under the GNU Library
+General Public License, see the file "COPYING" for details in the source
+code distribution.</font><br>
+<font face="Arial, Helvetica"><br>
+  SDL_draw is a simple library to draw basic elements, like points, lines
+and circles, on SDL surfaces. It's the primitive drawing library that <a
+ href="http://www.libsdl.org/">SDL</a> (Simple DirectMedia Layer) needed!!
+:-)<br>
+  <br>
+ Our native language is spanish. If you read something bad or misunderstanding,
+please send a message to some forum in the <a
+ href="http://sourceforge.net/forum/?group_id=59094">SourceForge library
+page</a>.<br>
+<br>
+If you use the library, we'd like to know it. Please, send us a message to
+some forum in the <a
+href="http://sourceforge.net/forum/?group_id=59094">SourceForge library page</a>
+ and we'll put a link in this web page.<br>
+ <br>
+<br>
+</font><font face="Arial, Helvetica"><b><big><u>Projects using
+SDL_draw</u></big></b></font><br>
+<font face="Arial, Helvetica"><br>
+None at the moment...<br>
+<br>
+<br>
+ <b><big><u> Library API</u></big></b><br>
+ <code> <br>
+  #include "SDL_draw.h"<br>
+  <br>
+  //IMPORTANT: Call this function AFTER the call to 'SDL_SetVideoMode':<br>
+  Draw_Init(); //Register the functions for current bpp<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_Pixel</font>(SDL_Surface *super,<br>
+                Sint16 x, Sint16 y, <br>
+                Uint32 color);<br>
+  <br>
+    Draw a colored pixel on coordinates x,y.<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_Line</font>(SDL_Surface *super,<br>
+               Sint16 x1, Sint16 y1, Sint16 x2, Sint16 y2,<br>
+               Uint32 color);<br>
+  <br>
+    Draw a line from x1,y1 to x2,y2.<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_Circle</font>(SDL_Surface *super,<br>
+                 Sint16 x0, Sint16 y0, Uint16 r,<br>
+                 Uint32 color);<br>
+                                          <br>
+    Draw a circle with center x0,y0 and radius r.<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_FillCircle</font>(SDL_Surface *super,<br>
+                     Sint16 x0, Sint16 y0, Uint16 r,<br>
+                     Uint32 color);<br>
+  <br>
+    Draw a filled circle with center x0,y0 and radius r.<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_HLine</font>(SDL_Surface *super,<br>
+                Sint16 x0,Sint16 y0, Sint16 x1,<br>
+                Uint32 color);<br>
+  <br>
+    Draw a horizontal line from x0,y0 to x1,y0.<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_VLine</font>(SDL_Surface *super,<br>
+                Sint16 x0,Sint16 y0, Sint16 y1,<br>
+                Uint32 color);<br>
+  <br>
+    Draw a vertical line from x0,y0 to x0,y1.<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_Rect</font>(SDL_Surface *super,<br>
+               Sint16 x,Sint16 y, Uint16 w,Uint16 h,<br>
+               Uint32 color);<br>
+  <br>
+    Draw a rectangle with upper left corner in x,y being w the width and
+h  the height.<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_FillRect</font>(SDL_Surface *super,<br>
+                   Sint16 x,Sint16 y, Uint16 w,Uint16 h,<br>
+                   Uint32 color);<br>
+  <br>
+    The same as above but the rectangle is filled. This function is equivalent
+ to SDL_FillRect (is a MACRO).<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_Ellipse</font>(SDL_Surface *super,<br>
+                  Sint16 x0, Sint16 y0,<br>
+                  Uint16 Xradius, Uint16 Yradius,<br>
+                  Uint32 color);<br>
+  <br>
+    Draw a ellipse with center in x0,y0. Xradius is the major axis and Yradius
+ is the minor axis.<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_FillEllipse</font>(SDL_Surface *super,<br>
+                      Sint16 x0, Sint16 y0,<br>
+                      Uint16 Xradius, Uint16 Yradius,<br>
+                      Uint32 color);<br>
+  <br>
+    Draw a filled ellipse (same parameters as the above function).<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_Round</font>(SDL_Surface *super,<br>
+                Sint16 x0,Sint16 y0, Uint16 w,Uint16 h,<br>
+                Uint16 corner, Uint32 color);<br>
+  <br>
+    Draw a rectangle with rounded corners. x0,y0 is the upper left corner 
+of the rectangle, w is the width and h is the height. corner is the radius
+of  the corner.<br>
+  <br>
+  <br>
+  void <font color="#006600">Draw_Round</font>(SDL_Surface *super,<br>
+                Sint16 x0,Sint16 y0, Uint16 w,Uint16 h,<br>
+                Uint16 corner, Uint32 color);<br>
+    <br>
+    The same as above but the rounded rectangle is filled.<br>
+  <br>
+  <br>
+ </code>  The file sdldrawtest.c is a example application for the library.
+You can compile it using (for the GNU Compiler):<br>
+ <code>  <br>
+  $ export CFLAGS="`sdl-config --cflags` -I./include"<br>
+  $ export LIBS="`sdl-config --libs` ./src/.libs/libSDL_draw.a"<br>
+  $ gcc -o sdldrawtest sdldrawtest.c -Wall $CFLAGS $LIBS<br>
+ </code>  <br>
+<br>
+  <br>
+  <br>
+  </font>
+	<p><center>
+<a href="http://sourceforge.net/projects/sdl-draw/"> <img
+src="http://sourceforge.net/sflogo.php?group_id=59094&amp;type=5" width="210"
+height="62" border="0" alt="SourceForge Logo"></a>
+</center></p>
+</body>
+</html>

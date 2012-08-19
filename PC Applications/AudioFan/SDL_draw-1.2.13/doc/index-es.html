@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>SDL_draw</title>
+                    
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+           
+  <meta name="author" content="Mario Palomo Torrero">
+   
+  <meta name="description" content="SDL_draw Library">
+</head>
+  <body bgcolor="#ffffff" text="#000000" link="#000099" vlink="#990099"
+ alink="#000099">
+ 
+<center><font face="Arial, Helvetica" size="+3">SDL_draw Library</font><br>
+<font face="Arial, Helvetica" size="-2">Mario Palomo, Jos&eacute; de la
+Huerga, Pepe Gonz&aacute;lez</font></center>
+
+<div align="right"><font color="#ffff00"><a 
+href="index.html"><small>English</small></a></font><br>
+ </div>
+ <font face="Arial, Helvetica"><b><big><u>SDL_draw 1.2.1 
+Liberada</u></big></b><br>
+  <br>
+La &uacute;ltima versi&oacute;n de esta librer&iacute;a esta disponible en:
+<a 
+href="http://sourceforge.net/projects/sdl-draw/">http://sourceforge.net/projects/sdl-draw/</a><br>
+   <br>
+ </font><font face="Arial, Helvetica">Esta librer&iacute;a se distribuye
+bajo la licencia GNU LGPL (</font><font face="Arial, Helvetica">Library General
+Public License</font><font face="Arial, Helvetica">), los detalles se encuentran
+en el fichero </font><font face="Arial, Helvetica">"COPYING"distribuido junto
+con el c&oacute;digo fuente de la librer&iacute;a.</font> <br>
+<font face="Arial, Helvetica"><br>
+   SDL_draw es una sencilla librer&iacute;a para representar primitivas
+b&aacute;sicas
+de dibujo, como puntos, rectas y circunferencias, sobre una superficie SDL.
+&iexcl;Se trata de la extensi&oacute;n que la librer&iacute;a <a
+ href="http://www.libsdl.org/">SDL</a> (Simple DirectMedia Layer)
+necesitaba!<br>
+   <br>
+Hasta ahora los desarrolladores de esta librer&iacute;a somos espa&ntilde;oles.
+Ninguno dominamos del todo bien el Ingl&eacute;s, pero si queremos que la
+librer&iacute;a se utilize ampliamente como una extensi&oacute;n a la SDL
+b&aacute;sica, hemos de trabajar en Ingl&eacute;s. Si tienes conocimientos
+de Ingl&eacute;s y observas algo mal escrito en la Web o en el c&oacute;digo,
+por favor, envianos un mensaje a alguno de los foros que esta librer&iacute;a
+tiene en la p&aacute;gina de <a
+href="http://sourceforge.net/forum/?group_id=59094">SourceForge</a>.
+Gracias de antemano por colaborar. (Si observas algo mal escrito en
+espa&ntilde;ol,
+tambi&eacute;n nos gustar&iacute;a saberlo :-))<br>
+<br>
+Si utilizas la librer&iacute;a, nos gustar&iacute;a saberlo. Puedes mandarnos
+un mensaje a alguno de los foros de la p&aacute;gina que esta librer&iacute;a
+tiene en <a href="http://sourceforge.net/forum/?group_id=59094">SourceForge</a>, 
+y
+pondremos
+un enlace a tu p&aacute;gina en este sitio.<br>
+  <br>
+ <br>
+ </font><font face="Arial, Helvetica"><b><big><u>Projectos que utilizan
+SDL_draw</u></big></b></font><br>
+ <font face="Arial, Helvetica"><br>
+Ninguno por el momento...<br>
+ <br>
+ <br>
+  <b><big><u>API de la librer&iacute;a</u></big></b><br>
+  <code> <br>
+   #include "SDL_draw.h"<br>
+   <br>
+   //IMPORTANTE: Llama a esta funci&oacute;n DESPUES de la llamada a 
+'SDL_SetVideoMode':<br>
+   Draw_Init(); //Registra las funciones para la profundidad de color actual<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_Pixel</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sint16 x, Sint16
+y, <br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Uint32 color);<br>
+   <br>
+Dibuja un pixel del color dado en las coordenadas x,y.<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_Line</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Sint16 x1, Sint16
+y1, Sint16 x2, Sint16 y2,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uint32 color);<br>
+   <br>
+Dibuja una l&iacute;nea desde x1,y1 hasta x2,y2.<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_Circle</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Sint16 x0,
+Sint16 y0, Uint16 r,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uint32 
+color);<br>
+                                           <br>
+Dibuja una circunferencia con centro en x0,y0 y radio r.<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_FillCircle</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;Sint16
+x0, Sint16 y0, Uint16 r,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;Uint32
+color);<br>
+   <br>
+Dibuja una circunferencia rellena con el color dado, con centro en x0,y0
+y radio r.<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_HLine</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sint16 x0,Sint16
+y0, Sint16 x1,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Uint32 color);<br>
+   <br>
+Dibuja una l&iacute;nea horizontal desde x0,y0 hasta x1,y0.<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_VLine</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sint16 x0,Sint16
+y0, Sint16 y1,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Uint32 color);<br>
+   <br>
+Dibuja una l&iacute;nea vertical desde x0,y0 hasta x0,y1.<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_Rect</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Sint16 x,Sint16 y,
+Uint16 w,Uint16 h,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uint32 color);<br>
+   <br>
+Dibuja un rect&aacute;ngulo con la esquina superior izquierda en x,y siendo
+w la anchura y h la altura.<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_FillRect</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Sint16
+x,Sint16 y, Uint16 w,Uint16 h,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uint32
+color);<br>
+   <br>
+Lo mismo que arriba, solo que el rect&aacute;ngulo es rellenado con el color.
+Esta funci&oacute;n es equivalente a SDL_FillRect (es una MACRO).<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_Ellipse</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sint16 x0,
+Sint16 y0,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Uint16 Xradius,
+Uint16 Yradius,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Uint32 
+color);<br>
+   <br>
+Dibuja una elipse con centro en x0,y0. El eje mayor es Xradius y el eje menor
+es Yradius.<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_FillEllipse</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Sint16 x0, Sint16 y0,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Uint16 Xradius, Uint16 Yradius,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Uint32 color);<br>
+   <br>
+Dibuja una elipse rellena (los par&aacute;metros son los mismos que los de
+la funci&oacute;n de arriba).<br>
+   <br>
+   <br>
+   void <font color="#006600">Draw_Round</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sint16 x0,Sint16
+y0, Uint16 w,Uint16 h,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Uint16 corner, Uint32
+color);<br>
+   <br>
+Dibuja un rect&aacute;ngulo con las esquinas redondeadas. x0,y0 es la esquina
+superior izquierda, w es la anchura y h es la altura. Y corner es el radio
+del cuarto de c&iacute;rculo que forma la esquina redondeada.<br>
+<br>
+   <br>
+   void <font color="#006600">Draw_Round</font>(SDL_Surface *super,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sint16 x0,Sint16
+y0, Uint16 w,Uint16 h,<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Uint16 corner, Uint32
+color);<br>
+     <br>
+Lo mismo que arriba, s&oacute;lo que se rellena del color el rect&aacute;ngulo
+de esquinas redondeadas.<br>
+   <br>
+   <br>
+  </code>El fichero sdldrawtest.c es un ejemplo de aplicaci&oacute;n que
+usa la librer&iacute;a. Puedes compilarlo escribiendo (para el compilador
+GNU):<br>
+<code>  <br>
+   $ export CFLAGS="`sdl-config --cflags` -I./include"<br>
+   $ export LIBS="`sdl-config --libs` ./src/.libs/libSDL_draw.a"<br>
+   $ gcc -o sdldrawtest sdldrawtest.c -Wall $CFLAGS $LIBS<br>
+  </code>  <br>
+ <br>
+   <br>
+   <br>
+   </font>   <br>
+	 
+<p><center>
+<a href="http://sourceforge.net/projects/sdl-draw/"> <img
+src="http://sourceforge.net/sflogo.php?group_id=59094&amp;type=5" width="210"
+height="62" border="0" alt="SourceForge Logo"></a> 
+</center></p>
+</body>
+</html>

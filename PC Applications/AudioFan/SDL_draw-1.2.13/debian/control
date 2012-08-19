@@ -1,0 +1,15 @@
+Source: libsdl-draw
+Section: libs
+Priority: optional
+Maintainer: Mario Palomo Torrero <mpalomo@users.sourceforge.net>
+Standards-Version: 3.2.1
+
+Package: libsdl-draw1.2
+Architecture: any
+Depends: ${shlibs:Depends}
+Provides: libsdl-draw
+Conflicts: libsdl-draw
+Description: Runtime & Development files to SDL_draw library.
+ The SDL_draw library is a simple library to draw basic elements, like
+ points, lines and circles, on SDL surfaces.
+

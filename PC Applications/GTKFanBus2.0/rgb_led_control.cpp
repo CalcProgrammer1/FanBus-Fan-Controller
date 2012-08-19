@@ -1,7 +1,10 @@
 #include "rgb_led_control.h"
 #include <stdio.h>
+#include "fanbus.h"
+extern fanbus bus;
+
 rgb_led_control::rgb_led_control()
-{
+{   
 	color.set_rgb(0, 0, 0);
 
 	//Set Frame Label
@@ -59,7 +62,20 @@ rgb_led_control::rgb_led_control()
 	slider_red.signal_value_changed().connect(sigc::mem_fun(*this, &rgb_led_control::slider_red_move));
 	slider_grn.signal_value_changed().connect(sigc::mem_fun(*this, &rgb_led_control::slider_grn_move));
 	slider_blu.signal_value_changed().connect(sigc::mem_fun(*this, &rgb_led_control::slider_blu_move));
-	color_button.signal_color_set().connect(sigc::mem_fun(*this, &rgb_led_control::color_button_changed));
+	color_button.signal_color_set().connect(  sigc::mem_fun(*this, &rgb_led_control::color_button_changed));
+}
+
+void rgb_led_control::set_addr(unsigned char dev_addr, unsigned char dev_led)
+{
+    fan_addr = dev_addr;
+    fan_led  = dev_led;
+    
+    //Update colors from fan
+  	color.set_red  (((bus.fanbus_read(0x10 + (fan_led*3), fan_addr)+1)*256)-1);
+ 	color.set_green(((bus.fanbus_read(0x11 + (fan_led*3), fan_addr)+1)*256)-1);
+    color.set_blue (((bus.fanbus_read(0x12 + (fan_led*3), fan_addr)+1)*256)-1);
+    update();
+    color_button_changed();
 }
 
 void rgb_led_control::update()
@@ -80,6 +96,12 @@ void rgb_led_control::update()
 	label_red_val.set_label(red_val);
 	label_grn_val.set_label(grn_val);
 	label_blu_val.set_label(blu_val);
+	
+	//Update fan device
+	bus.fanbus_write(0x10 + (fan_led*3), fan_addr, color.get_red()/256);
+	bus.fanbus_write(0x11 + (fan_led*3), fan_addr, color.get_green()/256);
+    bus.fanbus_write(0x12 + (fan_led*3), fan_addr, color.get_blue()/256);
+	bus.fanbus_write(0x0C, fan_addr, 0x01);
 }
 
 void rgb_led_control::set_red(unsigned char r)

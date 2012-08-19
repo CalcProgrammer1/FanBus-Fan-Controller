@@ -1,0 +1,18 @@
+TODO 08-2002
+~~~~~~~~~~~~
+
+- Code to clipping SDL surfaces...
+- Optimize Draw_Line (IMPORTANT, too slow)
+- Alpha Blending versions of the functions (using color from MapRGBA)
+
+
+TODO 07-2002
+~~~~~~~~~~~~
+
+- Draw_Arc
+- Draw_Pie (or Draw_FillArc)
+- Draw_Thick* (Thicks versions of the functions)
+- Implement __antialiasing__ version of the functions (ex: Draw_ALine)
+- Optimizations (Processor Pipeline and others)
+- Draw_Polygon & FillPolygon
+

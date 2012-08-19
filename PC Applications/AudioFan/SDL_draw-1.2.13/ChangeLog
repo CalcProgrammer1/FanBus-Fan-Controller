@@ -1,0 +1,38 @@
+2002-08-01 17:05  mpalomo
+
+	* Makefile.func, NEWS, README, TODO, aclocal.m4, sdldrawtest.c,
+	ltmain.sh, config.guess, config.sub, configure, configure.in,
+	install-sh, missing, Makefile.am, Makefile.in, ltconfig,
+	mkinstalldirs, AUTHORS, ChangeLog, INSTALL, acinclude.m4, COPYING,
+	doc/index-es.html, doc/index.html, src/Draw_Rect.c, src/SDL_draw.c,
+	src/Draw_Circle.c, src/Draw_Ellipse.c, src/Draw_FillCircle.c,
+	src/Draw_FillEllipse.c, src/Draw_FillRound.c, src/Draw_HLine.c,
+	src/Draw_Pixel.c, src/Draw_Round.c, src/Draw_VLine.c,
+	src/Makefile.am, src/Makefile.in, VisualC/SDL_draw.dsw,
+	VisualC/SDL_draw.ncb, VisualC/SDL_draw_static.dsp,
+	VisualC/sdldrawtest.dsp, src/Draw_Line.c, VisualC/README.txt,
+	VisualC/SDL_draw.opt, VisualC/SDL_draw_dynamic.dsp,
+	VisualC/SDL/README.txt, debian/README.Debian, debian/changelog,
+	debian/control, debian/copyright, debian/dirs, debian/docs,
+	debian/libSDL_draw1.2.files, debian/rules, include/SDL_draw.h:
+	Initial revision
+
+2002-08-01 17:05  mpalomo
+
+	* Makefile.func, NEWS, README, TODO, aclocal.m4, sdldrawtest.c,
+	ltmain.sh, config.guess, config.sub, configure, configure.in,
+	install-sh, missing, Makefile.am, Makefile.in, ltconfig,
+	mkinstalldirs, AUTHORS, ChangeLog, INSTALL, acinclude.m4, COPYING,
+	doc/index-es.html, doc/index.html, src/Draw_Rect.c, src/SDL_draw.c,
+	src/Draw_Circle.c, src/Draw_Ellipse.c, src/Draw_FillCircle.c,
+	src/Draw_FillEllipse.c, src/Draw_FillRound.c, src/Draw_HLine.c,
+	src/Draw_Pixel.c, src/Draw_Round.c, src/Draw_VLine.c,
+	src/Makefile.am, src/Makefile.in, VisualC/SDL_draw.dsw,
+	VisualC/SDL_draw.ncb, VisualC/SDL_draw_static.dsp,
+	VisualC/sdldrawtest.dsp, src/Draw_Line.c, VisualC/README.txt,
+	VisualC/SDL_draw.opt, VisualC/SDL_draw_dynamic.dsp,
+	VisualC/SDL/README.txt, debian/README.Debian, debian/changelog,
+	debian/control, debian/copyright, debian/dirs, debian/docs,
+	debian/libSDL_draw1.2.files, debian/rules, include/SDL_draw.h:
+	SDL_draw initial release
+

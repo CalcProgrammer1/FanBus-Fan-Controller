@@ -11,6 +11,9 @@ class rgb_led_control : public Gtk::Frame
 		//Constructor
 		rgb_led_control();
 
+        //Set address
+        void set_addr(unsigned char dev_addr, unsigned char dev_led);
+        
 		//Updates all of the controls
 		void update();
 
@@ -29,6 +32,9 @@ class rgb_led_control : public Gtk::Frame
 		bool get_lock();
 		
 	private:
+	    unsigned char fan_addr;
+	    unsigned char fan_led;
+	    
 		//LED Color
 		Gdk::Color color;
 		

@@ -1,22 +1,21 @@
 #include <gtkmm.h>
 #include "serial_port.h"
+#include "fanbus.h"
+
 class serial_control : public Gtk::Frame
 {
 	public:
 		serial_control();
 
         bool is_open();
-        void open();
-        void close();
-
-        //Function to read data from the port buffer
-		int read(char * buffer, int length);
-
-		//Function to write data to the serial port
-		int write(char * buffer, int length);
-
+        void control_open();
+        void control_close();
+        
+        sigc::signal<void> serial_open_signal;
+        
 	private:
         serial_port port;
+
         bool status;
 
         void toggle();

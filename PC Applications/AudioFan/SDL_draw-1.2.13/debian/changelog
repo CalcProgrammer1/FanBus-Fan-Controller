@@ -1,0 +1,16 @@
+libsdl-draw (1.2.11) unstable; urgency=low
+
+  * Updated release.
+
+ -- Mario Palomo Torrero <mpalomo@users.sourceforge.net>  Mon, 02 Oct 2006 19:27:54 +0200
+
+libsdl-draw (1.2.1) unstable; urgency=low
+
+  * Initial release.
+  * Adjusted the Makefile to use $DESTDIR,
+
+ -- Mario Palomo Torrero <mpalomo@users.sourceforge.net>  Wed, 31 Jul 2002 05:55:50 +0100
+
+Local variables:
+mode: debian-changelog
+End:

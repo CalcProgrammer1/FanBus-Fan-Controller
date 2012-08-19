@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="SDL_draw">
+		<Project filename="SDL_draw_static.cbp" />
+		<Project filename="SDL_draw_dynamic.cbp" />
+		<Project filename="sdldrawtest.cbp" active="1" />
+	</Workspace>
+</CodeBlocks_workspace_file>
