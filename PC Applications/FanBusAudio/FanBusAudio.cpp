@@ -30,15 +30,16 @@ float normalizeFFT(float fftin)
     }
 }
 
-int main()
+int main(int argc, char *argv[])
 {
     SDL_Surface* wavs = NULL;
     SDL_Surface* screen = NULL;
+    SDL_Event event;
     SDL_Init( SDL_INIT_EVERYTHING );
     screen = SDL_SetVideoMode( 256, 256, 32, SDL_HWSURFACE );
     wavs = SDL_SetVideoMode( 256, 256, 32, SDL_SWSURFACE );
-
-    port.serial_open("/dev/ttyUSB0", 38400);
+    SDL_WM_SetCaption("FanBus Audio Visualizer", NULL);
+    port.serial_open("COM2", 38400);
     bus.fanbus_set_port(&port);
 
     ALCdevice *device = alcCaptureOpenDevice(NULL, 10000, AL_FORMAT_MONO8, 256);
@@ -81,6 +82,11 @@ int main()
 
         SDL_BlitSurface(wavs, NULL, screen, NULL);
         SDL_Flip(screen);
+        SDL_PollEvent(&event);
+        if(event.type == SDL_QUIT)
+        {
+            return 0;
+        }
         SDL_Delay(25);
 
         unsigned char red = exp(charfft[200]);
